@@ -18,14 +18,20 @@
     <div class="container">
         <h1>Boka Elektriker eller Rörmokare</h1>
         <form id="form">
-            <label for="name">Namn:</label>
-            <input type="text" id="name" required>
+            <label for="firstname">Förnamn:</label>
+            <input type="text" id="firstname" required>
+
+            <label for="lastname">Efternamn:</label>
+            <input type="text" id="lastname" required>
 
             <label for="email">E-post:</label>
             <input type="email" id="email" required>
 
             <label for="phone">Telefonnummer:</label>
             <input type="tel" id="phone" required>
+
+            <label for="address">Adress till ärendet:</label>
+            <input type="text" id="address" required>
 
             <label for="service">Tjänst:</label>
             <select id="service" required>
@@ -37,29 +43,33 @@
             <label for="message">Beskriv ärendet:</label>
             <textarea id="message" rows="4" required></textarea>
 
-            <button type="submit">Skicka via e-post</button>
+            <button type="submit">Skicka via e‑post</button>
         </form>
     </div>
 
     <script>
         document.getElementById('form').addEventListener('submit', function(e) {
             e.preventDefault();
-            const name = document.getElementById('name').value;
+            const firstname = document.getElementById('firstname').value;
+            const lastname = document.getElementById('lastname').value;
             const email = document.getElementById('email').value;
             const phone = document.getElementById('phone').value;
+            const address = document.getElementById('address').value;
             const service = document.getElementById('service').value;
             const message = document.getElementById('message').value;
 
             const subject = encodeURIComponent("Bokning: " + service);
             const body = encodeURIComponent(
-                "Namn: " + name + "\n" +
-                "E-post: " + email + "\n" +
+                "Förnamn: " + firstname + "\n" +
+                "Efternamn: " + lastname + "\n" +
+                "E‑post: " + email + "\n" +
                 "Telefon: " + phone + "\n" +
+                "Adress: " + address + "\n" +
                 "Tjänst: " + service + "\n" +
                 "Meddelande: " + message
             );
 
-            window.location.href = `mailto:din@mail.se?subject=${subject}&body=${body}`;
+            window.location.href = `mailto:rexkingsrg@gmail.com?subject=${subject}&body=${body}`;
         });
     </script>
 </body>
