@@ -5,45 +5,40 @@
     <title>Boka Elektriker eller Rörmokare</title>
     <style>
         body {
-            font-family: 'Segoe UI', sans-serif;
-            background: url('https://images.unsplash.com/photo-1571171637578-41bc2dd41cd2?auto=format&fit=crop&w=1350&q=80') no-repeat center center fixed;
-            background-size: cover;
+            font-family: Arial, sans-serif;
             margin: 0;
-            padding: 0;
+            padding: 20px;
+            background: url('https://images.unsplash.com/photo-1610223623045-d1d6a50f0f53?auto=format&fit=crop&w=1950&q=80') no-repeat center center fixed;
+            background-size: cover;
         }
         .container {
             background: rgba(255, 255, 255, 0.95);
-            padding: 30px;
+            padding: 20px;
             max-width: 600px;
-            margin: 50px auto;
-            box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+            margin: auto;
+            box-shadow: 0 0 15px rgba(0,0,0,0.3);
             border-radius: 10px;
         }
         h1 {
-            text-align: center;
             color: #007acc;
+            text-align: center;
         }
         input, textarea, select, button {
             width: 100%;
-            padding: 12px;
+            padding: 10px;
             margin: 10px 0;
             box-sizing: border-box;
-            border: 1px solid #ccc;
             border-radius: 5px;
+            border: 1px solid #ccc;
         }
         button {
             background: #007acc;
             color: white;
-            font-size: 16px;
             border: none;
             cursor: pointer;
-            border-radius: 5px;
         }
         button:hover {
             background: #005fa3;
-        }
-        label {
-            font-weight: bold;
         }
     </style>
 </head>
@@ -66,8 +61,8 @@
             <label for="address">Din adress:</label>
             <input type="text" id="address" required>
 
-            <label for="caseaddress">Adress till ärendet:</label>
-            <input type="text" id="caseaddress">
+            <label for="caseAddress">Adress till ärendet (om samma som din egen, kan denna lämnas tom):</label>
+            <input type="text" id="caseAddress">
 
             <label for="service">Tjänst:</label>
             <select id="service" required>
@@ -79,7 +74,7 @@
             <label for="message">Beskriv ärendet:</label>
             <textarea id="message" rows="4" required></textarea>
 
-            <button type="submit">📧 Skicka bokning</button>
+            <button type="submit">Skicka via e‑post</button>
         </form>
     </div>
 
@@ -91,7 +86,7 @@
             const email = document.getElementById('email').value;
             const phone = document.getElementById('phone').value;
             const address = document.getElementById('address').value;
-            const caseaddress = document.getElementById('caseaddress').value;
+            const caseAddress = document.getElementById('caseAddress').value;
             const service = document.getElementById('service').value;
             const message = document.getElementById('message').value;
 
@@ -99,10 +94,10 @@
             const body = encodeURIComponent(
                 "Förnamn: " + firstname + "\n" +
                 "Efternamn: " + lastname + "\n" +
-                "E-post: " + email + "\n" +
+                "E‑post: " + email + "\n" +
                 "Telefon: " + phone + "\n" +
-                "Adress (egen): " + address + "\n" +
-                "Adress till ärendet: " + caseaddress + "\n" +
+                "Adress: " + address + "\n" +
+                "Adress till ärendet: " + caseAddress + "\n" +
                 "Tjänst: " + service + "\n" +
                 "Meddelande: " + message
             );
