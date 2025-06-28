@@ -1,22 +1,55 @@
-
 <!DOCTYPE html>
 <html lang="sv">
 <head>
     <meta charset="UTF-8">
     <title>Boka Elektriker eller Rörmokare</title>
     <style>
-        body { font-family: Arial; background: #f4f4f4; margin: 0; padding: 20px; }
-        .container { background: #fff; padding: 20px; max-width: 600px; margin: auto; box-shadow: 0 0 10px rgba(0,0,0,0.1); }
-        input, textarea, select, button {
-            width: 100%; padding: 10px; margin: 10px 0; box-sizing: border-box;
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            background: url('https://images.unsplash.com/photo-1571171637578-41bc2dd41cd2?auto=format&fit=crop&w=1350&q=80') no-repeat center center fixed;
+            background-size: cover;
+            margin: 0;
+            padding: 0;
         }
-        button { background: #007acc; color: white; border: none; cursor: pointer; }
-        button:hover { background: #005fa3; }
+        .container {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 30px;
+            max-width: 600px;
+            margin: 50px auto;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+            border-radius: 10px;
+        }
+        h1 {
+            text-align: center;
+            color: #007acc;
+        }
+        input, textarea, select, button {
+            width: 100%;
+            padding: 12px;
+            margin: 10px 0;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        button {
+            background: #007acc;
+            color: white;
+            font-size: 16px;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        button:hover {
+            background: #005fa3;
+        }
+        label {
+            font-weight: bold;
+        }
     </style>
 </head>
 <body>
     <div class="container">
-        <h1>Boka Elektriker eller Rörmokare</h1>
+        <h1>🔌 Boka Elektriker eller Rörmokare 🔧</h1>
         <form id="form">
             <label for="firstname">Förnamn:</label>
             <input type="text" id="firstname" required>
@@ -33,8 +66,8 @@
             <label for="address">Din adress:</label>
             <input type="text" id="address" required>
 
-            <label for="address">Adress till ärendet (om ärendet är på samma adress som din egen, kan du ignorera detta fält):</label>
-            <input type="text" id="address" required>
+            <label for="caseaddress">Adress till ärendet:</label>
+            <input type="text" id="caseaddress">
 
             <label for="service">Tjänst:</label>
             <select id="service" required>
@@ -46,7 +79,7 @@
             <label for="message">Beskriv ärendet:</label>
             <textarea id="message" rows="4" required></textarea>
 
-            <button type="submit">Skicka via e‑post</button>
+            <button type="submit">📧 Skicka bokning</button>
         </form>
     </div>
 
@@ -58,6 +91,7 @@
             const email = document.getElementById('email').value;
             const phone = document.getElementById('phone').value;
             const address = document.getElementById('address').value;
+            const caseaddress = document.getElementById('caseaddress').value;
             const service = document.getElementById('service').value;
             const message = document.getElementById('message').value;
 
@@ -65,9 +99,10 @@
             const body = encodeURIComponent(
                 "Förnamn: " + firstname + "\n" +
                 "Efternamn: " + lastname + "\n" +
-                "E‑post: " + email + "\n" +
+                "E-post: " + email + "\n" +
                 "Telefon: " + phone + "\n" +
-                "Adress: " + address + "\n" +
+                "Adress (egen): " + address + "\n" +
+                "Adress till ärendet: " + caseaddress + "\n" +
                 "Tjänst: " + service + "\n" +
                 "Meddelande: " + message
             );
