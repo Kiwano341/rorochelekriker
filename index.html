@@ -1,0 +1,66 @@
+
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+    <meta charset="UTF-8">
+    <title>Boka Elektriker eller Rörmokare</title>
+    <style>
+        body { font-family: Arial; background: #f4f4f4; margin: 0; padding: 20px; }
+        .container { background: #fff; padding: 20px; max-width: 600px; margin: auto; box-shadow: 0 0 10px rgba(0,0,0,0.1); }
+        input, textarea, select, button {
+            width: 100%; padding: 10px; margin: 10px 0; box-sizing: border-box;
+        }
+        button { background: #007acc; color: white; border: none; cursor: pointer; }
+        button:hover { background: #005fa3; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Boka Elektriker eller Rörmokare</h1>
+        <form id="form">
+            <label for="name">Namn:</label>
+            <input type="text" id="name" required>
+
+            <label for="email">E-post:</label>
+            <input type="email" id="email" required>
+
+            <label for="phone">Telefonnummer:</label>
+            <input type="tel" id="phone" required>
+
+            <label for="service">Tjänst:</label>
+            <select id="service" required>
+                <option value="">-- Välj tjänst --</option>
+                <option value="Elektriker">Elektriker</option>
+                <option value="Rörmokare">Rörmokare</option>
+            </select>
+
+            <label for="message">Beskriv ärendet:</label>
+            <textarea id="message" rows="4" required></textarea>
+
+            <button type="submit">Skicka via e-post</button>
+        </form>
+    </div>
+
+    <script>
+        document.getElementById('form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const phone = document.getElementById('phone').value;
+            const service = document.getElementById('service').value;
+            const message = document.getElementById('message').value;
+
+            const subject = encodeURIComponent("Bokning: " + service);
+            const body = encodeURIComponent(
+                "Namn: " + name + "\n" +
+                "E-post: " + email + "\n" +
+                "Telefon: " + phone + "\n" +
+                "Tjänst: " + service + "\n" +
+                "Meddelande: " + message
+            );
+
+            window.location.href = `mailto:din@mail.se?subject=${subject}&body=${body}`;
+        });
+    </script>
+</body>
+</html>
